@@ -7,12 +7,4 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Clockface.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Clockface.png" />
-  </ItemGroup>
-
 </Project>
