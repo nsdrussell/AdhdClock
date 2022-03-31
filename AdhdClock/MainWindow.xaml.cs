@@ -22,7 +22,7 @@ namespace AdhdClock
     public partial class MainWindow : Window
     {
         DispatcherTimer timer = new DispatcherTimer();
-         
+
         double secondsRemaining;
         public MainWindow()
         {
@@ -38,10 +38,10 @@ namespace AdhdClock
         private void SetTime(int seconds)
         {
             timer.Tick -= Timer_Time;
-            
+
             this.secondsRemaining = seconds;
             timer.Stop();
-            timer.Interval = new TimeSpan(0,0,1)  ; //update each second
+            timer.Interval = new TimeSpan(0, 0, 1); //update each second
             timer.Start();
             timer.Tick += Timer_Time;
             Timer_Time(null, new EventArgs());
@@ -50,6 +50,14 @@ namespace AdhdClock
         private void Timer_Time(object? sender, EventArgs e)
         {
             var time = $"{(int)secondsRemaining / 60:00}:{secondsRemaining % 60:00}";
+
+            if (secondsRemaining == 0)
+            {
+                lineRotation.Angle = 0;
+                timer.Stop();
+                return;
+            }
+
             timeLabel.Content = time;
             lineRotation.Angle = secondsRemaining-- / 10d;
         }
@@ -84,8 +92,10 @@ namespace AdhdClock
         private void setTimeLabel_MouseDown(object sender, MouseButtonEventArgs e)
         {
             SetTimeWindow setTimeWindow = new SetTimeWindow();
-            setTimeWindow.ShowDialog();
-            SetTime(setTimeWindow.Time);
+            if (setTimeWindow.ShowDialog() == true)
+            {
+                SetTime(setTimeWindow.Time);
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

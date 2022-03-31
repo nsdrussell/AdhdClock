@@ -8,10 +8,11 @@
         Title="Set Time" Height="150" Width="200"
         MinHeight="150" MaxHeight="150" MinWidth="200" MaxWidth="200"
         WindowStyle="ToolWindow"
+        Topmost="True"
         >
     <Grid>
         <Button Width="150" x:Name="okButton" IsEnabled="False" Content="OK" HorizontalAlignment="Center" Margin="0,67,0,0" VerticalAlignment="Top" Click="Button_Click" Height="40"/>
         <Slider HorizontalAlignment="Center" Margin="0,12,0,0" VerticalAlignment="Top" Width="180" Height="25" ValueChanged="Slider_ValueChanged" Maximum="60" SmallChange="1"/>
-        <Label Name="timeLabel" Content="Label" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,41,0,0"/>
+        <Label Name="timeLabel" Content="0 minutes" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,41,0,0"/>
     </Grid>
 </Window>
